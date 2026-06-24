@@ -1,0 +1,14 @@
+Predictor,Coefficient (log-odds),Adjusted OR,OR 95% CI lower,OR 95% CI upper,p-value (bootstrap),Significant (p<0.05)
+knows_importance_of_vaccination_Yes,1.197,3.309,1.835,6.221,0.0,Yes
+schedule_info_provided_Yes,0.736,2.087,1.158,4.059,0.018,Yes
+education_level_University,0.69,1.994,0.905,3.658,0.086,No
+distance_to_facility_More than 5 km,-0.564,0.569,0.276,1.179,0.124,No
+vaccine_stockout_experience_Yes,-0.522,0.593,0.293,1.205,0.13,No
+education_level_No formal education,-0.523,0.593,0.245,1.43,0.188,No
+received_health_education_Yes,0.442,1.556,0.756,3.067,0.22,No
+family_supports_immunization_Yes,0.25,1.285,0.698,2.471,0.406,No
+cultural_beliefs_influence_Yes,-0.259,0.772,0.387,1.531,0.46,No
+facility_delivery_Yes,0.141,1.151,0.596,2.245,0.664,No
+education_level_Primary,0.164,1.178,0.572,2.337,0.686,No
+distance_to_facility_Less than 1 km,-0.13,0.878,0.433,1.789,0.694,No
+education_level_Secondary,0.066,1.068,0.506,2.243,0.918,No

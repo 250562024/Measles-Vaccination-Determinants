@@ -1,0 +1,17 @@
+Predictor,Chi-square,df,p-value,Significant (p<0.05),Note
+knows_importance_of_vaccination,22.517,1,0.0,Yes,
+schedule_info_provided,9.853,1,0.0017,Yes,
+education_level,14.376,4,0.0062,Yes,
+family_supports_immunization,4.54,1,0.0331,Yes,
+received_health_education,4.116,1,0.0425,Yes,
+waiting_time,4.795,2,0.091,No,
+vaccine_stockout_experience,2.125,1,0.1449,No,
+sex,1.76,1,0.1846,No,
+occupation,3.643,3,0.3026,No,
+distance_to_facility,2.297,2,0.3171,No,
+facility_delivery,0.727,1,0.3939,No,
+cultural_beliefs_influence,0.201,1,0.6543,No,
+age_group,1.59,3,0.6616,No,
+number_of_children,0.277,2,0.8706,No,
+monthly_income,0.168,2,0.9195,No,
+marital_status,0.272,3,0.9652,No,Caution: low expected cell counts
