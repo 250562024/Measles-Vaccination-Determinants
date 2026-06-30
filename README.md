@@ -1,109 +1,122 @@
-# Determinants of Measles Vaccination Status Among Children Aged 12–23 Months
+# Measles Vaccination Determinants
+### Master of Public Health (Monitoring & Evaluation) Research Project
 
-A Python-based statistical analysis pipeline examining socio-demographic, health-service, and family-related determinants of measles vaccination completion among children aged 12–23 months, based on caregiver survey data.
+## Overview
 
-This repository was built as part of an MPH/public health thesis (sample size: 422 caregivers) and is shared publicly as a demonstration of the analysis methodology and a public health / M&E data analysis portfolio piece.
+This repository contains the statistical analysis, data outputs, visualizations, and supporting files for my Master of Public Health (MPH) research project.
 
----
+**Research Title**
 
-## ⚠️ Important note on the data
+> **Utilization of Measles Vaccination Services among Children Aged 12–23 Months in Hodan District, Banadir County, Somalia**
 
-> **The dataset in this repository (`data/raw_survey_data.csv`) is synthetic — it is not the real thesis data.**
->
-> Real participant data (422 caregivers, collected under institutional ethics approval) cannot be published publicly for participant confidentiality reasons, and is still being finalized for the thesis itself.
->
-> The synthetic dataset is generated programmatically (`scripts/generate_synthetic_data.py`) to **exactly match the structure, variables, and response categories of the real questionnaire** (see `Appendix_V_Questionnaire.md`), with realistic associations built in so the statistical pipeline produces interpretable, demonstration-quality output.
->
-> **The entire pipeline is designed so that dropping in the real cleaned dataset (same column names) and re-running the scripts in order reproduces the thesis results chapter directly** — no code changes required.
+The study investigates the utilization of measles vaccination services and identifies demographic, socio-economic, family, and health service factors associated with measles vaccination uptake among children aged 12–23 months.
 
 ---
 
-## What this project demonstrates
+## Research Objectives
 
-- Survey data cleaning & validation (`pandas`)
-- Descriptive/frequency analysis by questionnaire section
-- Bivariate inferential statistics (Pearson's chi-square tests of association)
-- Multivariable logistic regression with adjusted odds ratios & bootstrapped 95% confidence intervals (`scikit-learn`, `numpy`)
-- Publication-style data visualization, including a forest plot of odds ratios (`matplotlib`, `seaborn`)
-- A documented, reproducible analysis notebook
-- Clean, modular project structure suitable for handing real data to later
+### General Objective
 
-## Study variables
+To assess the utilization of measles vaccination services among children aged 12–23 months in Hodan District, Banadir County, Somalia.
 
-Drawn directly from the study questionnaire (Appendix V):
+### Specific Objectives
 
-| Section | Variables |
-|---|---|
-| **Socio-demographic factors** | Caregiver age, sex, marital status, education, occupation, household income |
-| **Health service factors** | Distance to nearest facility, waiting time, vaccine stock-out experience, schedule information provided, facility delivery |
-| **Outcome** | Child (12–23 months) measles vaccination status, confirmation source |
-| **Family-related factors** | Knowledge of vaccination importance, health education received, family support for immunization, cultural/traditional beliefs, number of children in household |
+- Determine the level of measles vaccination utilization.
+- Assess socio-demographic factors associated with measles vaccination.
+- Examine family-related determinants influencing vaccination uptake.
+- Evaluate health service factors affecting measles vaccination utilization.
+- Identify independent predictors of measles vaccination using multivariable logistic regression.
 
-See [`Appendix_V_Questionnaire.md`](Appendix_V_Questionnaire.md) for the full original instrument.
+---
 
-## Project structure
+## Study Design
+
+- Cross-sectional study
+- Study Area: Hodan District, Banadir County, Somalia
+- Sample Size: **422 caregivers**
+- Statistical Software: **SPSS**
+- Additional Analysis: **Python**
+- Significance Level: **p < 0.05**
+
+---
+
+## Repository Structure
 
 ```
-measles-vaccination-determinants/
-├── data/
-│   ├── raw_survey_data.csv          # synthetic demo data (or real export, once available)
-│   └── cleaned_survey_data.csv      # output of clean_data.py
-├── scripts/
-│   ├── generate_synthetic_data.py   # builds the synthetic demo dataset
-│   ├── clean_data.py                # validation, deduplication, missing-data report
-│   ├── descriptive_stats.py         # frequency tables by questionnaire section
-│   ├── chi_square_tests.py          # bivariate association tests
-│   ├── logistic_regression.py       # multivariable model + adjusted odds ratios
-│   └── visualize.py                 # generates all figures
-├── notebooks/
-│   └── analysis_walkthrough.ipynb   # end-to-end narrative notebook
-├── outputs/
-│   ├── tables/                      # CSV outputs (cross-tabs, regression results, etc.)
-│   └── figures/                     # PNG charts
-├── Appendix_V_Questionnaire.md
-├── requirements.txt
+├── Dataset_Raw_and_Cleaned.xlsx
+├── Statistical_Tables_Frequency_Chi_OR.xlsx
+├── Codebook_and_SPSS_Variable_View.xlsx
+├── SPSS_Syntax_Guide.sps
+├── thesis_statistics.json
+├── Chapter_4_Results.txt
+├── chi_square_tests.py
+├── chi_square_summary.csv
+├── 01_*.png
+├── 02_*.png
+├── 03_*.png
+├── 04_*.png
+├── 05_*.png
+├── 06_*.png
 └── README.md
 ```
 
-## How to run
+---
 
-```bash
-git clone <this-repo-url>
-cd measles-vaccination-determinants
-pip install -r requirements.txt
+## Statistical Methods
 
-# 1. Generate the synthetic demo dataset (skip this step once real data is available —
-#    just place the real export at data/raw_survey_data.csv with matching column names)
-python scripts/generate_synthetic_data.py --n 422 --seed 42
+The analysis includes:
 
-# 2. Clean and validate
-python scripts/clean_data.py
+- Descriptive Statistics
+- Frequency Distribution
+- Percentages
+- Cross-tabulation
+- Chi-Square Test
+- Binary Logistic Regression
+- Adjusted Odds Ratios (AOR)
+- 95% Confidence Intervals
 
-# 3. Run the full analysis
-python scripts/descriptive_stats.py
-python scripts/chi_square_tests.py
-python scripts/logistic_regression.py
-python scripts/visualize.py
-```
+---
 
-Or open `notebooks/analysis_walkthrough.ipynb` for the full narrative walkthrough with embedded charts.
+## Figures Included
 
-## Sample output
+The repository contains visualizations including:
 
-**Adjusted odds ratios for predictors of measles vaccination status:**
+- Measles Vaccination Coverage
+- Caregiver Education Level
+- Vaccination Coverage by Health Service Factors
+- Vaccination Coverage by Family Factors
+- Forest Plot of Adjusted Odds Ratios
+- Chi-Square Significance Profile
 
-![Odds ratio forest plot](outputs/figures/03_odds_ratio_forest_plot.png)
+---
 
-## Methodology notes
+## Software Used
 
-- **Chi-square tests** use Pearson's test of independence; cells with expected counts < 5 are flagged per standard practice.
-- **Logistic regression** uses `scikit-learn` with one-hot encoded categorical predictors (reference category dropped) and bootstrap resampling (1,000 iterations) for 95% confidence intervals and approximate p-values, avoiding a hard dependency on `statsmodels`. Researchers who prefer classic Wald-based standard errors/p-values can swap in `statsmodels.Logit` directly — the design matrix construction in `logistic_regression.py` is written to make this a drop-in change.
-- Variables entered into the multivariable model were selected based on the bivariate (chi-square) screening step, following standard epidemiological model-building convention (variables with p < 0.25 in bivariate analysis are eligible for the multivariable model).
+- IBM SPSS Statistics
+- Microsoft Excel
+- Python
+- GitHub
 
-## License & use
+---
 
-This code and methodology are shared for portfolio/demonstration purposes. The real thesis data and findings are not included and remain under the author's institution's ethics approval and data-sharing policies. Feel free to reuse the analysis pipeline structure for your own (properly ethics-approved) survey data.
+## Ethical Considerations
+
+The study follows accepted research ethics principles including confidentiality, voluntary participation, informed consent, and secure handling of research data.
+
+---
 
 ## Author
 
-Built and maintained as part of an ongoing MPH thesis. Feedback and suggestions welcome via Issues.
+**Mohamed Omar Jele**
+
+Master of Public Health (Monitoring & Evaluation)
+
+Kenyatta University
+
+Nairobi, Kenya
+
+---
+
+## Disclaimer
+
+This repository is intended for academic and research purposes only. Any use of the materials should appropriately acknowledge the author and comply with institutional research ethics and academic integrity standards.
